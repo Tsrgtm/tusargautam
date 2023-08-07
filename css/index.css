@@ -506,7 +506,7 @@ h1 {
 @media screen and (max-width: 768px) {
 
   .navbar {
-    max-height: 90px;
+    height: 90px;
   }
 
   .navbar ul {
