@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Font Pairing Tool</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <style>
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    select, input[type="text"], input[type="range"] {
+      width: fit-content;
+      text-align: center;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    button {
+      background-color: #333;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #555;
+    }
+    #fontPairings {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .font-card {
+      width: calc(33.33% - 1rem);
+      margin-bottom: 1rem;
+      padding: 1rem;
+      border: 1px solid #ccc;
+    }
+    @media screen and (max-width: 768px) {
+      #fontPairings {
+        display: block;
+      }
+      .font-card {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li>
+        <a class="dropbtn" href="#">Productivity</a>
+        <div class="dropdown-content">
+          <a href="QR code maker.html">QR Code Generator</a>
+          <a href="upper-lower case.html">Upper-Lower Case</a>
+          <a href="typing speed.html">Typing Speed</a>
+          <a href="password generator.html">Password Generator</a>
+          <a href="image compressor.html">Image Compressor</a>
+          <a href="character counter.html">Character Counter</a>
+          <a href="special char.html">Special Characters</a>
+        </div>
+      </li>
+      <li>
+        <a class="dropbtn" href="#">Designing</a>
+        <div class="dropdown-content">
+          <a href="color scheme generator.html">Color Scheme Generator</a>
+          <a href="Color Platte generator.html">Color Palette Generator</a>
+          <a href="gradient maker.html">Gradient Generator</a>
+          <a href="font.html">Font Pairing</a>
+        </div>
+      </li>
+      <li>
+        <a class="dropbtn" href="#">Studying</a>
+        <div class="dropdown-content">
+          <a href="equation solver.html">Equation Solver</a>
+          <a class="hide-in-mobile" href="periodic table.html">Periodic Table</a>
+          <a href="sci calculator.html">Scientific Calculator</a>
+          <a href="bmi tool.html">BMI Tool</a>
+        </div>
+      </li>
+      <li>
+        <a class="dropbtn" href="#">Coding</a>
+        <div class="dropdown-content">
+          <a href="code formattor.html">Code Formattor</a>
+          <a href="code compressor.html">Code Compressor</a>
+          <a href="pseudo for python.html">Pseudo Code for PY</a>
+        </div>
+      </li>
+      <li>
+        <a class="dropbtn" href="#">Fun Games</a>
+        <div class="dropdown-content">
+          <a href="Text Emoji.html">Text Emoji</a>
+          <a href="Roll a dice.html">Roll a Dice</a>
+          <a href="quote generator.html">Quote Generator</a>
+          <a class="hide-in-mobile" href="soduko solver.html">Sudoku Solver</a>
+          <a href="tic tac toe.html">Tic Tac Toe</a>
+        </div>
+      </li>
+      <li><a href="../about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <section style="justify-content: center;align-items: center; display: flex; text-align: center;">
+    <div id="fontOptions" style="box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);padding: 20px;width: 80%;justify-content: center;align-items: center;">
+      <h1>Font Pairing Tool</h1>
+      <div>
+        <label for="baseFontSelect">Choose a Base Font:</label>
+        <select id="baseFontSelect">
+          <!-- Options will be populated using JavaScript -->
+        </select>
+      </div>
+      <div>
+        <label for="pairedFontSelect">Choose a Paired Font:</label>
+        <select id="pairedFontSelect">
+          <!-- Options will be populated using JavaScript -->
+        </select>
+      </div>
+      <div>
+        <label for="sampleTextInput">Sample Text:</label>
+        <input type="text" id="sampleTextInput" value="A quick brown fox jumped over a lazy dog.">
+      </div>
+      <div>
+        <label for="fontSizeSelect">Font Size:</label>
+        <select id="fontSizeSelect">
+          <option value="16px">16px</option>
+          <option value="20px">20px</option>
+          <option value="24px">24px</option>
+          <!-- Add more font size options if desired -->
+        </select>
+      </div>
+      <div>
+        <label for="fontWeightSelect">Font Weight:</label>
+        <select id="fontWeightSelect">
+          <option value="normal">Normal</option>
+          <option value="bold">Bold</option>
+          <option value="bolder">Bolder</option>
+          <!-- Add more font weight options if desired -->
+        </select>
+      </div>
+      <div>
+        <label for="fontStyleSelect">Font Style:</label>
+        <select id="fontStyleSelect">
+          <option value="normal">Normal</option>
+          <option value="italic">Italic</option>
+          <option value="oblique">Oblique</option>
+          <!-- Add more font style options if desired -->
+        </select>
+      </div>
+      <div>
+        <label for="letterSpacingSelect">Letter Spacing:</label>
+        <input type="range" id="letterSpacingSelect" min="-2" max="2" step="0.1">
+        <span id="letterSpacingValue">0</span>
+      </div>
+      <button id="generateButton">Generate Font Pairings</button>
+      <section id="fontPairings">
+      <!-- Font pairings will be displayed here -->
+      </section>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2023 tusargautam.com</p>
+      <p>Contact: gautamtusar2@gmail.com</p>
+    </div>
+  </footer>
+
+  <script>
+    const baseFonts = [
+      "Open Sans",
+      "Roboto",
+      "Montserrat",
+      "Lato",
+      "Source Sans Pro",
+      "Raleway",
+      "Oswald",
+      "Ubuntu",
+      "Poppins",
+      "Nunito",
+      "Merriweather",
+      "Droid Sans",
+      "Playfair Display",
+      "PT Sans",
+      "Noto Sans",
+      "Roboto Condensed",
+      "Fira Sans",
+      "Lora",
+      "Cabin",
+      "Quicksand",
+      "Inconsolata",
+      "Pacifico",
+      "Alegreya",
+      "Exo",
+      "Bitter",
+      "Work Sans",
+      "Muli",
+      "Titillium Web",
+      "Archivo",
+      "Abril Fatface",
+      "Yanone Kaffeesatz",
+      "Dancing Script",
+      "Rubik",
+      "Josefin Sans",
+      "Anton",
+      "Karla",
+      "Lobster",
+      "Hind",
+      "Hind Siliguri",
+      "Archivo Narrow",
+      "Poppins",
+      "Arimo",
+      "Libre Baskerville",
+      "Nunito Sans",
+      "Bree Serif",
+      "Inter",
+      // Add more unique fonts here
+    ];
+
+    const pairedFonts = [
+      "Cormorant Garamond",
+      "Pacifico",
+      "Oxygen",
+      "Jura",
+      "Architects Daughter",
+      "Russo One",
+      "Shadows Into Light Two",
+      "Allura",
+      "Marck Script",
+      "Great Vibes",
+      "Chewy",
+      "Fjalla One",
+      "Permanent Marker",
+      "Sacramento",
+      "Vidaloka",
+      "Cutive Mono",
+      "Special Elite",
+      "IBM Plex Mono",
+      "Sedgwick Ave Display",
+      "Grenze Gotisch",
+      "Yeseva One",
+      "Bowlby One SC",
+      "Monoton",
+      "Lilita One",
+      "Press Start 2P",
+      "Gloria Hallelujah",
+      "Diplomata SC",
+      "VT323",
+      "Megrim",
+      "Rakkas",
+      "Unlock",
+      "Freckle Face",
+      "Volkhov",
+      "Nova Script",
+      "Limelight",
+      "Nosifer",
+      "Jura",
+      "Barriecito",
+      "Norican",
+      // Add more unique fonts here
+    ];
+
+
+    // Function to load Google Fonts API and get available font families
+    function loadFonts() {
+      const link = document.createElement('link');
+      link.href = 'https://fonts.googleapis.com/css?family=' + baseFonts.join('|') + '|' + pairedFonts.join('|');
+      link.rel = 'stylesheet';
+      document.head.appendChild(link);
+    }
+
+    // Function to populate font selection options
+    function populateFontOptions() {
+      const baseFontSelect = document.getElementById('baseFontSelect');
+      const pairedFontSelect = document.getElementById('pairedFontSelect');
+
+      // Add base fonts to the base font select options
+      baseFonts.forEach((font) => {
+        const option = document.createElement('option');
+        option.textContent = font;
+        baseFontSelect.appendChild(option);
+      });
+
+      // Add paired fonts to the paired font select options
+      pairedFonts.forEach((font) => {
+        const option = document.createElement('option');
+        option.textContent = font;
+        pairedFontSelect.appendChild(option);
+      });
+    }
+
+    // Function to update the letter spacing value
+    function updateLetterSpacingValue() {
+      const letterSpacingValue = document.getElementById('letterSpacingValue');
+      const letterSpacingSelect = document.getElementById('letterSpacingSelect');
+      letterSpacingValue.textContent = letterSpacingSelect.value;
+    }
+
+    // Event listener for the letter spacing range input
+    document.getElementById('letterSpacingSelect').addEventListener('input', updateLetterSpacingValue);
+
+    // Event listener for the generate button
+    document.getElementById('generateButton').addEventListener('click', generateFontPairings);
+
+    // Function to generate font pairings
+    function generateFontPairings() {
+      const baseFont = document.getElementById('baseFontSelect').value;
+      const pairedFont = document.getElementById('pairedFontSelect').value;
+      const sampleText = document.getElementById('sampleTextInput').value;
+      const fontSize = document.getElementById('fontSizeSelect').value;
+      const fontWeight = document.getElementById('fontWeightSelect').value;
+      const fontStyle = document.getElementById('fontStyleSelect').value;
+      const letterSpacing = document.getElementById('letterSpacingSelect').value;
+
+      const fontPairingsSection = document.getElementById('fontPairings');
+      fontPairingsSection.innerHTML = '';
+
+      const fontPairingCard = document.createElement('div');
+      fontPairingCard.classList.add('font-card');
+
+      const baseFontText = document.createElement('p');
+      baseFontText.style.fontFamily = baseFont;
+      baseFontText.style.fontSize = fontSize;
+      baseFontText.style.fontWeight = fontWeight;
+      baseFontText.style.fontStyle = fontStyle;
+      baseFontText.style.letterSpacing = letterSpacing + 'em';
+      baseFontText.textContent = sampleText;
+
+      const pairedFontText = document.createElement('p');
+      pairedFontText.style.fontFamily = pairedFont;
+      pairedFontText.style.fontSize = fontSize;
+      pairedFontText.style.fontWeight = fontWeight;
+      pairedFontText.style.fontStyle = fontStyle;
+      pairedFontText.style.letterSpacing = letterSpacing + 'em';
+      pairedFontText.textContent = sampleText;
+
+      fontPairingCard.appendChild(baseFontText);
+      fontPairingCard.appendChild(pairedFontText);
+      fontPairingsSection.appendChild(fontPairingCard);
+    }
+
+    loadFonts();
+    populateFontOptions();
+    updateLetterSpacingValue();
+    generateFontPairings(); // Generate font pairings initially
+  </script>
+
+  <script>// get all buttons with class 'dropbtn'
+    var buttons = document.querySelectorAll(".dropbtn");
+    
+    // add event listener to each button
+    buttons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        // get the content element next to the clicked button
+        var content = this.nextElementSibling;
+    
+        // close previously opened content if any
+        document.querySelectorAll('.dropdown-content.expanded').forEach(function(expandedContent) {
+            if (expandedContent !== content) {
+                expandedContent.classList.remove('expanded');
+            }
+        });
+    
+        // toggle a class on the content element to expand/collapse it
+        content.classList.toggle("expanded");
+      });
+    });
+    
+    // add event listener to the entire document to close content on outside click
+    document.addEventListener('click', function(event) {
+        // get all content elements
+        var contents = document.querySelectorAll('.dropdown-content');
+    
+        // check if the click is outside the button and content area
+        if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-content') && !event.target.closest('.dropdown-content')) {
+            // close all content elements
+            contents.forEach(function(content) {
+                content.classList.remove('expanded');
+            });
+        }
+    });
+  </script>
+</body>
+</html>

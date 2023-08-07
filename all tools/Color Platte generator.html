@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Palette Generator</title>
+  <link rel="stylesheet" href="../css/index.css">
+</head>
+<style>
+    #colorPickerContainer {
+      display: inline-block;
+      margin-right: 20px;
+    }
+
+    #colorPalette {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .color-box {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      border-radius: 5px;
+    }
+  </style>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li>
+        <a class="dropbtn" href="#">Productivity</a>
+        <div class="dropdown-content">
+          <a href="QR code maker.html">QR Code Generator</a>
+          <a href="upper-lower case.html">Upper-Lower Case</a>
+          <a href="typing speed.html">Typing Speed</a>
+          <a href="password generator.html">Password Generator</a>
+          <a href="image compressor.html">Image Compressor</a>
+          <a href="character counter.html">Character Counter</a>
+          <a href="special char.html">Special Characters</a>
+        </div>
+      </li>
+      <li>
+        <a class="dropbtn" href="#">Designing</a>
+        <div class="dropdown-content">
+          <a href="color scheme generator.html">Color Scheme Generator</a>
+          <a href="Color Platte generator.html">Color Palette Generator</a>
+          <a href="gradient maker.html">Gradient Generator</a>
+          <a href="font.html">Font Pairing</a>
+        </div>
+      </li>
+      <li>
+        <a class="dropbtn" href="#">Studying</a>
+        <div class="dropdown-content">
+          <a href="equation solver.html">Equation Solver</a>
+          <a class="hide-in-mobile" href="periodic table.html">Periodic Table</a>
+          <a href="sci calculator.html">Scientific Calculator</a>
+          <a href="bmi tool.html">BMI Tool</a>
+        </div>
+      </li>
+      <li>
+        <a class="dropbtn" href="#">Coding</a>
+        <div class="dropdown-content">
+          <a href="code formattor.html">Code Formattor</a>
+          <a href="code compressor.html">Code Compressor</a>
+          <a href="pseudo for python.html">Pseudo Code for PY</a>
+        </div>
+      </li>
+      <li>
+        <a class="dropbtn" href="#">Fun Games</a>
+        <div class="dropdown-content">
+          <a href="Text Emoji.html">Text Emoji</a>
+          <a href="Roll a dice.html">Roll a Dice</a>
+          <a href="quote generator.html">Quote Generator</a>
+          <a class="hide-in-mobile" href="soduko solver.html">Sudoku Solver</a>
+          <a href="tic tac toe.html">Tic Tac Toe</a>
+        </div>
+      </li>
+      <li><a href="../about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <section class="toolarea">
+    <div class="box">
+      <h1>Color Palette Generator</h1>
+      <div id="colorPickerContainer">
+        <input type="color" id="colorPicker">
+      </div>
+      <button id="generateButton">Generate Palette</button>
+      <div id="colorPalette"></div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2023 YourWebsite.com</p>
+      <p>Contact: info@yourwebsite.com</p>
+    </div>
+  </footer>
+
+ <script>// get all buttons with class 'dropbtn'
+    var buttons = document.querySelectorAll(".dropbtn");
+    
+    // add event listener to each button
+    buttons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        // get the content element next to the clicked button
+        var content = this.nextElementSibling;
+    
+        // close previously opened content if any
+        document.querySelectorAll('.dropdown-content.expanded').forEach(function(expandedContent) {
+            if (expandedContent !== content) {
+                expandedContent.classList.remove('expanded');
+            }
+        });
+    
+        // toggle a class on the content element to expand/collapse it
+        content.classList.toggle("expanded");
+      });
+    });
+    
+    // add event listener to the entire document to close content on outside click
+    document.addEventListener('click', function(event) {
+        // get all content elements
+        var contents = document.querySelectorAll('.dropdown-content');
+    
+        // check if the click is outside the button and content area
+        if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-content') && !event.target.closest('.dropdown-content')) {
+            // close all content elements
+            contents.forEach(function(content) {
+                content.classList.remove('expanded');
+            });
+        }
+    });
+  </script>
+
+  <script>
+    const generateButton = document.getElementById('generateButton');
+    const keywordsInput = document.getElementById('keywordsInput');
+    const colorPicker = document.getElementById('colorPicker');
+    const colorPalette = document.getElementById('colorPalette');
+
+    // Function to generate color palette based on color or keywords
+    async function generatePalette() {
+      if (colorPicker.value) {
+        // Generate color palette based on the selected color
+        const selectedColor = colorPicker.value;
+        const palette = await generateColorPalette(selectedColor);
+        displayPalette(palette);
+      } else if (keywordsInput.value) {
+        // Generate color palette based on keywords
+        const keywords = keywordsInput.value;
+        const palette = await generatePaletteByKeywords(keywords);
+        displayPalette(palette);
+      } else {
+        alert('Please choose a color or enter keywords to generate a palette.');
+      }
+    }
+
+    // Function to fetch color palette based on color from The Color API
+    async function generateColorPalette(color) {
+      const apiUrl = `https://www.thecolorapi.com/scheme?hex=${encodeURIComponent(color)}&mode=triad&count=5`;
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        return data.colors.map(color => {
+          const rgb = color.rgb;
+          return [rgb.r, rgb.g, rgb.b];
+        });
+      } catch (error) {
+        console.error('Error fetching color palette:', error);
+        colorPalette.innerHTML = 'An error occurred while generating the palette.';
+        return [];
+      }
+    }
+
+    // Function to fetch color palette based on keywords from The Color API
+    async function generatePaletteByKeywords(keywords) {
+      const apiUrl = `https://www.thecolorapi.com/scheme?keywords=${encodeURIComponent(keywords)}&mode=triad&count=5`;
+      try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        return data.colors.map(color => {
+          const rgb = color.rgb;
+          return [rgb.r, rgb.g, rgb.b];
+        });
+      } catch (error) {
+        console.error('Error fetching color palette:', error);
+        colorPalette.innerHTML = 'An error occurred while generating the palette.';
+        return [];
+      }
+    }
+
+    // Function to display the color palette
+      function displayPalette(palette) {
+        colorPalette.innerHTML = '';
+        palette.forEach(color => {
+          const colorBox = document.createElement('div');
+          colorBox.classList.add('color-box');
+          const hexCode = `#${color[0].toString(16).padStart(2, '0')}${color[1].toString(16).padStart(2, '0')}${color[2].toString(16).padStart(2, '0')}`;
+          colorBox.style.backgroundColor = hexCode;
+          colorBox.addEventListener('click', () => copyHexCode(hexCode)); // Add click event listener to copy HEX code
+          colorPalette.appendChild(colorBox);
+        });
+      }
+
+      function copyHexCode(hexCode) {
+        const tempInput = document.createElement('input');
+        tempInput.value = hexCode;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        alert(`Copied HEX code: ${hexCode}`);
+      }
+
+
+    // Event listener for the generate button
+    generateButton.addEventListener('click', generatePalette);
+  </script>
+
+</body>
+</html>

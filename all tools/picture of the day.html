@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NASA Astronomy Picture of the Day</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <style>
+    img {
+      max-width: 100%;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li> <a class="dropbtn" href="#">Productivity</a>
+        <div class="dropdown-content"> <a href="QR code maker.html">QR Code Generator</a> <a href="upper-lower case.html">Upper-Lower Case</a> <a href="typing speed.html">Typing Speed</a> <a href="password generator.html">Password Generator</a> <a href="image compressor.html">Image Compressor</a> <a href="character counter.html">Character Counter</a> <a href="special char.html">Special Characters</a> </div>
+      </li>
+      <li> <a class="dropbtn" href="#">Designing</a>
+        <div class="dropdown-content"> <a href="color scheme generator.html">Color Scheme Generator</a> <a href="Color Platte generator.html">Color Palette Generator</a> <a href="gradient maker.html">Gradient Generator</a> <a href="font.html">Font Pairing</a> </div>
+      </li>
+      <li> <a class="dropbtn" href="#">Studying</a>
+        <div class="dropdown-content"> <a href="equation solver.html">Equation Solver</a> <a class="hide-in-mobile" href="periodic table.html">Periodic Table</a> <a href="sci calculator.html">Scientific Calculator</a> <a href="bmi tool.html">BMI Tool</a> </div>
+      </li>
+      <li> <a class="dropbtn" href="#">Coding</a>
+        <div class="dropdown-content"> <a href="code formattor.html">Code Formattor</a> <a href="code compressor.html">Code Compressor</a> <a href="pseudo for python.html">Pseudo Code for PY</a> </div>
+      </li>
+      <li> <a class="dropbtn" href="#">Fun Games</a>
+        <div class="dropdown-content"> <a href="Text Emoji.html">Text Emoji</a> <a href="Roll a dice.html">Roll a Dice</a> <a href="quote generator.html">Quote Generator</a> <a class="hide-in-mobile" href="soduko solver.html">Sudoku Solver</a> <a href="tic tac toe.html">Tic Tac Toe</a> </div>
+      </li>
+      <li><a href="../about.html">About</a></li>
+    </ul>
+  </nav>
+  <section class="toolarea">
+    <div class="box">
+      <h1>NASA Astronomy Picture of the Day</h1>
+      <div id="apodDetails"></div>
+      <img id="apodImage" alt="Astronomy Picture of the Day">
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2023 tusargautam.com</p>
+      <p>Contact: gautamtusar2@gmail.com</p>
+    </div>
+  </footer>
+
+  <script>
+    const apiKey = 'T29kpwBgP6K56xmfFXGe6BlMRgxQBsQJBVNX3cPg'; // Replace with your NASA API key
+    const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
+
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        displayAPOD(data);
+      })
+      .catch(error => {
+        console.error('Error fetching APOD:', error);
+        document.getElementById('apodDetails').innerText = 'Error fetching Astronomy Picture of the Day. Please try again later.';
+      });
+
+    function displayAPOD(apodData) {
+      const apodDetailsElement = document.getElementById('apodDetails');
+      const apodImageElement = document.getElementById('apodImage');
+
+      const title = apodData.title;
+      const explanation = apodData.explanation;
+      const imageUrl = apodData.url;
+      const mediaType = apodData.media_type;
+
+      apodDetailsElement.innerHTML = `<h2>${title}</h2><p>${explanation}</p>`;
+
+      if (mediaType === 'image') {
+        apodImageElement.src = imageUrl;
+        apodImageElement.style.display = 'block';
+      } else {
+        apodImageElement.style.display = 'none';
+        apodDetailsElement.innerHTML += '<p>Today\'s Astronomy Picture of the Day is not an image. Please visit the link below to view it.</p>';
+        apodDetailsElement.innerHTML += `<a href="${imageUrl}" target="_blank">View on NASA Website</a>`;
+      }
+    }
+  </script>
+
+  <script>// get all buttons with class 'dropbtn'
+    var buttons = document.querySelectorAll(".dropbtn");
+    
+    // add event listener to each button
+    buttons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        // get the content element next to the clicked button
+        var content = this.nextElementSibling;
+    
+        // close previously opened content if any
+        document.querySelectorAll('.dropdown-content.expanded').forEach(function(expandedContent) {
+            if (expandedContent !== content) {
+                expandedContent.classList.remove('expanded');
+            }
+        });
+    
+        // toggle a class on the content element to expand/collapse it
+        content.classList.toggle("expanded");
+      });
+    });
+    
+    // add event listener to the entire document to close content on outside click
+    document.addEventListener('click', function(event) {
+        // get all content elements
+        var contents = document.querySelectorAll('.dropdown-content');
+    
+        // check if the click is outside the button and content area
+        if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-content') && !event.target.closest('.dropdown-content')) {
+            // close all content elements
+            contents.forEach(function(content) {
+                content.classList.remove('expanded');
+            });
+        }
+    });
+  </script>
+</body>
+</html>
