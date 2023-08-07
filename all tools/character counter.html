@@ -1,1 +1,85 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Character Counter</title> <link rel="stylesheet" href="../css/index.css"> </head> <body> <nav class="navbar"> <ul> <li><a href="../index.html">Home</a></li> <li> <a class="dropbtn" href="#">Productivity</a> <div class="dropdown-content"> <a href="QR code maker.html">QR Code Generator</a> <a href="upper-lower case.html">Upper-Lower Case</a> <a href="typing speed.html">Typing Speed</a> <a href="password generator.html">Password Generator</a> <a href="image compressor.html">Image Compressor</a> <a href="character counter.html">Character Counter</a> <a href="special char.html">Special Characters</a> </div> </li> <li> <a class="dropbtn" href="#">Designing</a> <div class="dropdown-content"> <a href="color scheme generator.html">Color Scheme Generator</a> <a href="Color Platte generator.html">Color Palette Generator</a> <a href="gradient maker.html">Gradient Generator</a> <a href="font.html">Font Pairing</a> </div> </li> <li> <a class="dropbtn" href="#">Studying</a> <div class="dropdown-content"> <a href="equation solver.html">Equation Solver</a> <a class="hide-in-mobile" href="periodic table.html">Periodic Table</a> <a href="sci calculator.html">Scientific Calculator</a> <a href="bmi tool.html">BMI Tool</a> </div> </li> <li> <a class="dropbtn" href="#">Coding</a> <div class="dropdown-content"> <a href="code formattor.html">Code Formattor</a> <a href="code compressor.html">Code Compressor</a> <a href="pseudo for python.html">Pseudo Code for PY</a> </div> </li> <li> <a class="dropbtn" href="#">Fun Games</a> <div class="dropdown-content"> <a href="Text Emoji.html">Text Emoji</a> <a href="Roll a dice.html">Roll a Dice</a> <a href="quote generator.html">Quote Generator</a> <a class="hide-in-mobile" href="soduko solver.html">Sudoku Solver</a> <a href="tic tac toe.html">Tic Tac Toe</a> </div> </li> <li><a href="../about.html">About</a></li> </ul> </nav> <section class="toolarea"> <div class="box"> <h1 style="text-align: center;">Character Counter</h1> <label for="inputText">Enter your text:</label> <textarea id="inputText" placeholder="Enter text to count characters"></textarea> <p id="charCount">Character count: 0</p> <p id="wordCount">Word count: 0</p> </div> </div> </section> <footer class="footer"> <div class="footer-content"> <p>&copy; 2023 tusargautam.com</p> <p>Contact: gautamtusar2@gmail.com</p> </div> </footer> <script> var buttons = document.querySelectorAll(".dropbtn"); buttons.forEach(function(button) { button.addEventListener("click", function() { var content = this.nextElementSibling; document.querySelectorAll('.dropdown-content.expanded').forEach(function(expandedContent) { if (expandedContent !== content) { expandedContent.classList.remove('expanded'); } }); content.classList.toggle("expanded"); }); }); document.addEventListener('click', function(event) { var contents = document.querySelectorAll('.dropdown-content'); if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-content') && !event.target.closest('.dropdown-content')) { contents.forEach(function(content) { content.classList.remove('expanded'); }); } }); </script> <script> const inputText = document.getElementById('inputText'); const charCount = document.getElementById('charCount'); const wordCount = document.getElementById('wordCount'); inputText.addEventListener('input', updateCharacterAndWordCount); function updateCharacterAndWordCount() { const text = inputText.value; const charCountValue = text.length; const wordCountValue = text.split(/\s+/).filter(Boolean).length; charCount.textContent = `Character count: ${charCountValue}`; wordCount.textContent = `Word count: ${wordCountValue}`; } </script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Counter</title>
+  <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="../tools.html">Home</a></li>
+      <li> <a class="dropbtn" href="#">Productivity</a>
+        <div class="dropdown-content"> <a href="QR code maker.html">QR Code Generator</a> <a href="upper-lower case.html">Upper-Lower Case</a> <a href="typing speed.html">Typing Speed</a> <a href="password generator.html">Password Generator</a> <a href="image compressor.html">Image Compressor</a> <a href="character counter.html">Character Counter</a> <a href="special char.html">Special Characters</a> <a href="lyrics.html">Lyrics Finder</a> <a href="song recognition.html">Song recognizer</a> </div>
+      </li>
+      <li> <a class="dropbtn" href="#">Designing</a>
+        <div class="dropdown-content"> <a href="color scheme generator.html">Color Scheme Generator</a> <a href="Color Platte generator.html">Color Palette Generator</a> <a href="gradient maker.html">Gradient Generator</a> <a href="font.html">Font Pairing</a> </div>
+      </li>
+      <li> <a class="dropbtn" href="#">Studying</a>
+        <div class="dropdown-content"> <a href="equation solver.html">Equation Solver</a> <a class="hide-in-mobile" href="periodic table.html">Periodic Table</a> <a href="sci calculator.html">Scientific Calculator</a> <a href="bmi tool.html">BMI Tool</a> </div>
+      </li>
+      <li> <a class="dropbtn" href="#">Coding</a>
+        <div class="dropdown-content"> <a href="code formattor.html">Code Formattor</a> <a href="code compressor.html">Code Compressor</a> <a href="pseudo for python.html">Pseudo Code for PY</a> </div>
+      </li>
+      <li> <a class="dropbtn" href="#">Fun Games</a>
+        <div class="dropdown-content"> <a href="Text Emoji.html">Text Emoji</a> <a href="Roll a dice.html">Roll a Dice</a> <a href="quote generator.html">Quote Generator</a> <a class="hide-in-mobile" href="soduko solver.html">Sudoku Solver</a> <a href="tic tac toe.html">Tic Tac Toe</a> <a href="movie recommend.html">Movie Recommendation</a> <a href="random joke.html">Random Jokes</a> <a href="picture of the day.html">Picture of the Day</a> </div>
+      </li>
+      <li><a href="../index.html">About</a></li>
+    </ul>
+  </nav>
+  <section class="toolarea">
+    <div class="box">
+      <h1 style="text-align: center;">Character Counter</h1> <label for="inputText">Enter your text:</label> <textarea id="inputText" placeholder="Enter text to count characters"></textarea>
+      <p id="charCount">Character count: 0</p>
+      <p id="wordCount">Word count: 0</p>
+    </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2023 tusargautam.com</p>
+      <p>Contact: gautamtusar2@gmail.com</p>
+    </div>
+  </footer>
+  <script>
+    var buttons = document.querySelectorAll(".dropbtn");
+    buttons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        var content = this.nextElementSibling;
+        document.querySelectorAll('.dropdown-content.expanded').forEach(function(expandedContent) {
+          if (expandedContent !== content) {
+            expandedContent.classList.remove('expanded');
+          }
+        });
+        content.classList.toggle("expanded");
+      });
+    });
+    document.addEventListener('click', function(event) {
+      var contents = document.querySelectorAll('.dropdown-content');
+      if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-content') && !event.target.closest('.dropdown-content')) {
+        contents.forEach(function(content) {
+          content.classList.remove('expanded');
+        });
+      }
+    });
+  </script>
+  <script>
+    const inputText = document.getElementById('inputText');
+    const charCount = document.getElementById('charCount');
+    const wordCount = document.getElementById('wordCount');
+    inputText.addEventListener('input', updateCharacterAndWordCount);
+
+    function updateCharacterAndWordCount() {
+      const text = inputText.value;
+      const charCountValue = text.length;
+      const wordCountValue = text.split(/\s+/).filter(Boolean).length;
+      charCount.textContent = `Character count: ${charCountValue}`;
+      wordCount.textContent = `Word count: ${wordCountValue}`;
+    }
+  </script>
+</body>
+
+</html>

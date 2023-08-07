@@ -1,1 +1,145 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Python to Pseudo-Code Converter</title> <link rel="stylesheet" href="../css/index.css"> </head> <body> <nav class="navbar"> <ul> <li><a href="../index.html">Home</a></li> <li> <a class="dropbtn" href="#">Productivity</a> <div class="dropdown-content"> <a href="QR code maker.html">QR Code Generator</a> <a href="upper-lower case.html">Upper-Lower Case</a> <a href="typing speed.html">Typing Speed</a> <a href="password generator.html">Password Generator</a> <a href="image compressor.html">Image Compressor</a> <a href="character counter.html">Character Counter</a> <a href="special char.html">Special Characters</a> </div> </li> <li> <a class="dropbtn" href="#">Designing</a> <div class="dropdown-content"> <a href="color scheme generator.html">Color Scheme Generator</a> <a href="Color Platte generator.html">Color Palette Generator</a> <a href="gradient maker.html">Gradient Generator</a> <a href="font.html">Font Pairing</a> </div> </li> <li> <a class="dropbtn" href="#">Studying</a> <div class="dropdown-content"> <a href="equation solver.html">Equation Solver</a> <a class="hide-in-mobile" href="periodic table.html">Periodic Table</a> <a href="sci calculator.html">Scientific Calculator</a> <a href="bmi tool.html">BMI Tool</a> </div> </li> <li> <a class="dropbtn" href="#">Coding</a> <div class="dropdown-content"> <a href="code formattor.html">Code Formattor</a> <a href="code compressor.html">Code Compressor</a> <a href="pseudo for python.html">Pseudo Code for PY</a> </div> </li> <li> <a class="dropbtn" href="#">Fun Games</a> <div class="dropdown-content"> <a href="Text Emoji.html">Text Emoji</a> <a href="Roll a dice.html">Roll a Dice</a> <a href="quote generator.html">Quote Generator</a> <a class="hide-in-mobile" href="soduko solver.html">Sudoku Solver</a> <a href="tic tac toe.html">Tic Tac Toe</a> </div> </li> <li><a href="../about.html">About</a></li> </ul> </nav> <section class="toolarea"> <div class="box"> <h1>Python to Pseudo-Code Converter</h1> <label for="python-Code" style="margin-bottom: 10px;">Enter Python Code:</label> <textarea id="python-code" rows="20" cols="80" placeholder="Paste your Python code here..."></textarea> <br> <button onclick="convertToPseudo()">Convert to Pseudo Code</button> <br> <textarea id="pseudo-code" rows="20" cols="80" placeholder="Pseudo code appears here..." readonly></textarea> <p style="cursor: pointer; text-decoration: underline;" id="copyButton">Click to copy</p> </div> </section> <footer class="footer"> <div class="footer-content"> <p>&copy; 2023 YourWebsite.com</p> <p>Contact: info@yourwebsite.com</p> </div> </footer> <script> var buttons = document.querySelectorAll(".dropbtn"); buttons.forEach(function(button) { button.addEventListener("click", function() { var content = this.nextElementSibling; document.querySelectorAll('.dropdown-content.expanded').forEach(function(expandedContent) { if (expandedContent !== content) { expandedContent.classList.remove('expanded'); } }); content.classList.toggle("expanded"); }); }); document.addEventListener('click', function(event) { var contents = document.querySelectorAll('.dropdown-content'); if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-content') && !event.target.closest('.dropdown-content')) { contents.forEach(function(content) { content.classList.remove('expanded'); }); } }); </script> <script> const basicConversionRules = { "for": "FOR", "=": "TO", "if": "IF", "==": "EQUALS", "while": "WHILE", "until": "UNTIL", "import": "IMPORT", "class": "DEFINE CLASS", "def": "DEFINE FUNCTION", "else:": "ELSE:", "elif": "ELSEIF", "except:": "EXCEPT:", "try:": "TRY:", "pass": "PASS", "in": "IN" }; const prefixConversionRules = { "=": "SET ", "#F": "CALL " }; const advancedConversionRules = { "print": "OUTPUT", "return": "RETURN", "input": "INPUT" }; const l2pseudo = (toPseudo) => { const result = []; for (let line of toPseudo) { line = line.trim(); if (line.startsWith("#")) { result.push(line); continue; } let convertedLine = line; for (const [key, value] of Object.entries(prefixConversionRules)) { const pattern = new RegExp(`\\b${key}\\b`, 'g'); convertedLine = convertedLine.replace(pattern, value); } for (const [key, value] of Object.entries(basicConversionRules)) { const pattern = new RegExp(`\\b${key}\\b`, 'g'); convertedLine = convertedLine.replace(pattern, value); } for (const [key, value] of Object.entries(advancedConversionRules)) { const pattern = new RegExp(`\\b${key}\\b`, 'g'); convertedLine = convertedLine.replace(pattern, value); } result.push(convertedLine); } return result; }; const p2file = (toFile) => { const pseudoCode = toFile.join("\n"); const pseudoCodeTextArea = document.getElementById("pseudo-code"); pseudoCodeTextArea.value = pseudoCode; }; const convertToPseudo = () => { const pythonCodeTextArea = document.getElementById("python-code"); const pythonCode = pythonCodeTextArea.value; const pythonCodeLines = pythonCode.split("\n"); const workFile = l2pseudo(pythonCodeLines); p2file(workFile); }; </script> <script> const copyButton = document.getElementById('copyButton'); const inputText = document.getElementById('pseudo-code'); copyButton.addEventListener('click', copyTextFromTextArea); function copyTextFromTextArea() { inputText.select(); document.execCommand('copy'); alert('Text copied to clipboard'); } </script> </body> </html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python to Pseudo-Code Converter</title>
+  <link rel="stylesheet" href="../css/index.css">
+</head>
+
+<body>
+  <nav class="navbar">
+    <ul>
+      <li><a href="../tools.html">Home</a></li>
+      <li> <a class="dropbtn" href="#">Productivity</a>
+        <div class="dropdown-content"> <a href="QR code maker.html">QR Code Generator</a> <a href="upper-lower case.html">Upper-Lower Case</a> <a href="typing speed.html">Typing Speed</a> <a href="password generator.html">Password Generator</a> <a href="image compressor.html">Image Compressor</a> <a href="character counter.html">Character Counter</a> <a href="special char.html">Special Characters</a> <a href="lyrics.html">Lyrics Finder</a> <a href="song recognition.html">Song recognizer</a> </div>
+      </li>
+      <li> <a class="dropbtn" href="#">Designing</a>
+        <div class="dropdown-content"> <a href="color scheme generator.html">Color Scheme Generator</a> <a href="Color Platte generator.html">Color Palette Generator</a> <a href="gradient maker.html">Gradient Generator</a> <a href="font.html">Font Pairing</a> </div>
+      </li>
+      <li> <a class="dropbtn" href="#">Studying</a>
+        <div class="dropdown-content"> <a href="equation solver.html">Equation Solver</a> <a class="hide-in-mobile" href="periodic table.html">Periodic Table</a> <a href="sci calculator.html">Scientific Calculator</a> <a href="bmi tool.html">BMI Tool</a> </div>
+      </li>
+      <li> <a class="dropbtn" href="#">Coding</a>
+        <div class="dropdown-content"> <a href="code formattor.html">Code Formattor</a> <a href="code compressor.html">Code Compressor</a> <a href="pseudo for python.html">Pseudo Code for PY</a> </div>
+      </li>
+      <li> <a class="dropbtn" href="#">Fun Games</a>
+        <div class="dropdown-content"> <a href="Text Emoji.html">Text Emoji</a> <a href="Roll a dice.html">Roll a Dice</a> <a href="quote generator.html">Quote Generator</a> <a class="hide-in-mobile" href="soduko solver.html">Sudoku Solver</a> <a href="tic tac toe.html">Tic Tac Toe</a> <a href="movie recommend.html">Movie Recommendation</a> <a href="random joke.html">Random Jokes</a> <a href="picture of the day.html">Picture of the Day</a> </div>
+      </li>
+      <li><a href="../index.html">About</a></li>
+    </ul>
+  </nav>
+  <section class="toolarea">
+    <div class="box">
+      <h1>Python to Pseudo-Code Converter</h1> <label for="python-Code" style="margin-bottom: 10px;">Enter Python Code:</label> <textarea id="python-code" rows="20" cols="80" placeholder="Paste your Python code here..."></textarea> <br> <button onclick="convertToPseudo()">Convert to Pseudo Code</button> <br> <textarea id="pseudo-code" rows="20" cols="80" placeholder="Pseudo code appears here..." readonly></textarea>
+      <p style="cursor: pointer; text-decoration: underline;" id="copyButton">Click to copy</p>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2023 YourWebsite.com</p>
+      <p>Contact: info@yourwebsite.com</p>
+    </div>
+  </footer>
+  <script>
+    var buttons = document.querySelectorAll(".dropbtn");
+    buttons.forEach(function(button) {
+      button.addEventListener("click", function() {
+        var content = this.nextElementSibling;
+        document.querySelectorAll('.dropdown-content.expanded').forEach(function(expandedContent) {
+          if (expandedContent !== content) {
+            expandedContent.classList.remove('expanded');
+          }
+        });
+        content.classList.toggle("expanded");
+      });
+    });
+    document.addEventListener('click', function(event) {
+      var contents = document.querySelectorAll('.dropdown-content');
+      if (!event.target.matches('.dropbtn') && !event.target.matches('.dropdown-content') && !event.target.closest('.dropdown-content')) {
+        contents.forEach(function(content) {
+          content.classList.remove('expanded');
+        });
+      }
+    });
+  </script>
+  <script>
+    const basicConversionRules = {
+      "for": "FOR",
+      "=": "TO",
+      "if": "IF",
+      "==": "EQUALS",
+      "while": "WHILE",
+      "until": "UNTIL",
+      "import": "IMPORT",
+      "class": "DEFINE CLASS",
+      "def": "DEFINE FUNCTION",
+      "else:": "ELSE:",
+      "elif": "ELSEIF",
+      "except:": "EXCEPT:",
+      "try:": "TRY:",
+      "pass": "PASS",
+      "in": "IN"
+    };
+    const prefixConversionRules = {
+      "=": "SET ",
+      "#F": "CALL "
+    };
+    const advancedConversionRules = {
+      "print": "OUTPUT",
+      "return": "RETURN",
+      "input": "INPUT"
+    };
+    const l2pseudo = (toPseudo) => {
+      const result = [];
+      for (let line of toPseudo) {
+        line = line.trim();
+        if (line.startsWith("#")) {
+          result.push(line);
+          continue;
+        }
+        let convertedLine = line;
+        for (const [key, value] of Object.entries(prefixConversionRules)) {
+          const pattern = new RegExp(`\\b${key}\\b`, 'g');
+          convertedLine = convertedLine.replace(pattern, value);
+        }
+        for (const [key, value] of Object.entries(basicConversionRules)) {
+          const pattern = new RegExp(`\\b${key}\\b`, 'g');
+          convertedLine = convertedLine.replace(pattern, value);
+        }
+        for (const [key, value] of Object.entries(advancedConversionRules)) {
+          const pattern = new RegExp(`\\b${key}\\b`, 'g');
+          convertedLine = convertedLine.replace(pattern, value);
+        }
+        result.push(convertedLine);
+      }
+      return result;
+    };
+    const p2file = (toFile) => {
+      const pseudoCode = toFile.join("\n");
+      const pseudoCodeTextArea = document.getElementById("pseudo-code");
+      pseudoCodeTextArea.value = pseudoCode;
+    };
+    const convertToPseudo = () => {
+      const pythonCodeTextArea = document.getElementById("python-code");
+      const pythonCode = pythonCodeTextArea.value;
+      const pythonCodeLines = pythonCode.split("\n");
+      const workFile = l2pseudo(pythonCodeLines);
+      p2file(workFile);
+    };
+  </script>
+  <script>
+    const copyButton = document.getElementById('copyButton');
+    const inputText = document.getElementById('pseudo-code');
+    copyButton.addEventListener('click', copyTextFromTextArea);
+
+    function copyTextFromTextArea() {
+      inputText.select();
+      document.execCommand('copy');
+      alert('Text copied to clipboard');
+    }
+  </script>
+</body>
+
+</html>
