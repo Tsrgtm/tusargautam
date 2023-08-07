@@ -506,9 +506,7 @@ h1 {
 @media screen and (max-width: 768px) {
 
   .navbar {
-    height: 80px;
-    display: flex;
-    justify-content: center;
+    max-height: 90px;
   }
 
   .navbar ul {
