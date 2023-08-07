@@ -389,95 +389,6 @@ button {
   border-radius: 4px;
 }
 
-.skills-section {
-  margin-top: 40px;
-}
-
-.skill-list li {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.skill-list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.skill-list li {
-  background-color: black;
-  color: white;
-  cursor: pointer;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  transition: all 0.5s ease-in-out;
-  border-radius: 10px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.skill-list li h3 {
-  color: white;
-}
-
-.skill-list li .progress-bar {
-  background-color: #fff;
-}
-
-.progress-bar {
-  width: 100%;
-  height: 18px;
-  background-color: black;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 10px;
-}
-
-.progress {
-  height: 18px;
-  background-color: #1abc9c;
-  border-radius: 10px;
-  transition: width 0.5s ease-in-out;
-}
-
-.skill-list li:nth-of-type(1) .progress {
-  width: 90%;
-}
-
-.skill-list li:nth-of-type(2) .progress {
-  width: 85%;
-  background-color: #e67e22;
-}
-
-.skill-list li:nth-of-type(3) .progress {
-  width: 75%;
-  background-color: #3498db;
-}
-
-.skill-list li:nth-of-type(4) .progress {
-  width: 80%;
-  background-color: #9b59b6;
-}
-
-.skill-list li:nth-of-type(5) .progress {
-  width: 70%;
-  background-color: #e74c3c;
-}
-
-.skill-list li:nth-of-type(6) .progress {
-  width: 85%;
-  background-color: rgb(152, 7, 50);
-}
-
 main {
   max-width: 960px;
   margin: 0 auto;
@@ -506,16 +417,7 @@ h1 {
 @media screen and (max-width: 768px) {
 
   .navbar {
-    height: 90px;
-  }
-
-  .navbar ul {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    text-align: center;
-  }
-  .navbar li {
-    margin: 5px 0;
+    display: none;
   }
 
   .dropdown-content {
@@ -603,5 +505,10 @@ h1 {
     align-items: center;
     justify-content: center;
     text-align: center;
+  }
+
+  .character-card{
+    height: 30px;
+    width: 30px;
   }
 }
