@@ -86,6 +86,7 @@ nav ul li a:hover:after {
     color: #4ecdc4;
 }
 
+/* Content Section */
 .content {
     display: flex;
     flex-direction: column;
