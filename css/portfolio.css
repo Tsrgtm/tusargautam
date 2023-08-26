@@ -128,7 +128,7 @@ nav ul li a:hover:after {
 }
 
 /* Media Queries */
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
     .content {
         padding-left: 5%;
     }
@@ -142,7 +142,7 @@ nav ul li a:hover:after {
     }
 }
 
-@media screen and (max-width: 480px) {
+@media (max-width: 480px) {
     nav ul {
         flex-direction: column;
         align-items: center;
