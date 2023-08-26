@@ -444,14 +444,6 @@ h1 {
 
 @media screen and (max-width: 768px) {
 
-  .navbar {
-    display: none;
-  }
-
-  .dropdown-content {
-    position: relative;
-  }
-
   .tools li {
     padding: 5px;
     background-color: #f3f3f3;
