@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Personal Portfolio Website</title>
+  <link rel="stylesheet" href="css/contact.css" />
+  <script src="https://kit.fontawesome.com/51f3ce67bb.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Tools</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="wrapper">
+
+      <div class="company-info">
+        <h3>tusargautam.com.np</h3>
+
+        <ul>
+          <li><i class="fa fa-location-dot"></i> Tulsipur, Dang (22412)</li>
+          <li><i class="fa fa-phone"></i> (+977) 9822802412</li>
+          <li><i class="fa fa-envelope"></i> mailme@tusargautam.com.np</li>
+        </ul>
+      </div>
+      <div class="contact">
+        <h3>E-mail Us</h3>
+
+        <form id="contact-form" action="https://formspree.io/f/maygoven" method="POST">
+
+          <p>
+            <label>Name</label>
+            <input type="text" name="name" id="name" required>
+          </p>
+
+          <p>
+            <label>Subject</label>
+            <input type="text" name="subject" id="subject">
+          </p>
+
+          <p>
+            <label>E-mail Address</label>
+            <input type="email" name="email" id="email" required>
+          </p>
+
+          <p>
+            <label>Phone Number</label>
+            <input type="text" name="phone" id="phone">
+          </p>
+
+          <p class="full">
+            <label>Message</label>
+            <textarea name="message" rows="5" id="message"></textarea>
+          </p>
+
+          <p class="full">
+            <button class="btn" type="submit">Submit</button>
+          </p>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+
+</html>
