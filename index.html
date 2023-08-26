@@ -28,4 +28,17 @@
   </div>
 </body>
 
+  <script>
+        document.getElementById("download-button").addEventListener("click", function() {
+            var fileName = "tusargautam__CV"; // Replace with the actual file nam
+            var fileUrl = "cv.pdf" + fileName; // Replace with the actual file URL
+
+            var link = document.createElement("a");
+            link.href = fileUrl;
+            link.download = fileName;
+            link.target = "_blank"; // Open the link in a new tab/window
+            link.click();
+        });
+    </script>
+
 </html>
