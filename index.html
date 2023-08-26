@@ -23,21 +23,10 @@
       <p>
         My goal is to become a proficient web designer and create innovative and user-friendly web experiences that leave a positive impact on users.I love to solve problems and use creativity to build beautiful and functional websites.
       </p>
-      <button class="btn" id="download-button">Download CV</button>
+      <a href="cv.pdf" download="TusarGautam_CV.pdf"><button class="btn" id="download-button">Download CV</button>
     </div>
   </div>
 </body>
 
-  <script>
-        document.getElementById("download-button").addEventListener("click", function() {
-            var fileName = "cv.pdf"; // Replace with the actual file nam
-            var fileUrl = "cv.pdf" + fileName; // Replace with the actual file URL
-
-            var link = document.createElement("a");
-            link.href = fileUrl;
-            link.download = fileName;
-            link.click();
-        });
-    </script>
 
 </html>
