@@ -1,0 +1,80 @@
+defaults:
+  - scope:
+      path: "/index.html"
+      type: "pages"
+    values:
+      permalink: ""
+
+  - scope:
+      path: "/tools.html"
+      type: "pages"
+    values:
+      permalink: "/tools"
+
+  - scope:
+      path: "/contact.html"
+      type: "pages"
+    values:
+      permalink: "/contact"
+
+  - scope:
+      path: "/about.html"
+      type: "pages"
+    values:
+      permalink: "about"
+
+  - scope:
+      path: "/all%20tools/QR%20code%20maker.html"
+      type: "pages"
+    values:
+      permalink: "/tools/QR-code-maker"
+
+  - scope:
+      path: "/all%20tools/upper-lower%20case.html"
+      type: "pages"
+    values:
+      permalink: "/tools/upper-lower-case"
+
+   - scope:
+      path: "/all%20tools/typing%20speed.html"
+      type: "pages"
+    values:
+      permalink: "/tools/typing-speed"
+
+   - scope:
+      path: "/all%20tools/password%20generator.html"
+      type: "pages"
+    values:
+      permalink: "/tools/password-generator"
+
+   - scope:
+      path: "/all%20tools/image%20compressor.html"
+      type: "pages"
+    values:
+      permalink: "/tools/image-compressor"
+
+   - scope:
+      path: "/all%20tools/character%20counter.html"
+      type: "pages"
+    values:
+      permalink: "/tools/character-counter"
+
+   - scope:
+      path: "/all%20tools/special%20char.html"
+      type: "pages"
+    values:
+      permalink: "/tools/special-characters"
+
+   - scope:
+      path: "/all%20tools/lyrics.html"
+      type: "pages"
+    values:
+      permalink: "/tools/lyrics-find"
+
+   - scope:
+      path: "/all%20tools/song%20recognition.html"
+      type: "pages"
+    values:
+      permalink: "/tools/song-recognizer"
+
+
