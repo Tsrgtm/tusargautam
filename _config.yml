@@ -35,46 +35,44 @@ defaults:
     values:
       permalink: "/tools/upper-lower-case"
 
-   - scope:
+  - scope:
       path: "/all%20tools/typing%20speed.html"
       type: "pages"
     values:
       permalink: "/tools/typing-speed"
 
-   - scope:
+  - scope:
       path: "/all%20tools/password%20generator.html"
       type: "pages"
     values:
       permalink: "/tools/password-generator"
 
-   - scope:
+  - scope:
       path: "/all%20tools/image%20compressor.html"
       type: "pages"
     values:
       permalink: "/tools/image-compressor"
 
-   - scope:
+  - scope:
       path: "/all%20tools/character%20counter.html"
       type: "pages"
     values:
       permalink: "/tools/character-counter"
 
-   - scope:
+  - scope:
       path: "/all%20tools/special%20char.html"
       type: "pages"
     values:
       permalink: "/tools/special-characters"
 
-   - scope:
+  - scope:
       path: "/all%20tools/lyrics.html"
       type: "pages"
     values:
       permalink: "/tools/lyrics-find"
 
-   - scope:
+  - scope:
       path: "/all%20tools/song%20recognition.html"
       type: "pages"
     values:
       permalink: "/tools/song-recognizer"
-
-
